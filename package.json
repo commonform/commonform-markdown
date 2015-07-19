@@ -1,0 +1,30 @@
+{
+  "name": "commonform-markdown",
+  "description": "render Common Forms as Markdown documents",
+  "version": "0.0.0",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
+  "dependencies": {
+    "commonform": "^1.0.1",
+    "commonform-flatten": "^0.5.0",
+    "decimal-numbering": "^1.0.0",
+    "markdown-escape": "^1.0.0"
+  },
+  "devDependencies": {
+    "jsmd-tape": "^0.1.0",
+    "tape": "^4.0.1"
+  },
+  "keywords": [
+    "Markdown",
+    "contracts",
+    "document assembly",
+    "escape codes",
+    "knowledge management",
+    "law"
+  ],
+  "license": "Apache-2.0",
+  "repository": "commonform/commonform-markdown",
+  "scripts": {
+    "pretest": "jsmd-tape README.md | sed 's!commonform-markdown!./!' | sed s/jsmd/README/ > README.js",
+    "test": "tape README.js test.js"
+  }
+}

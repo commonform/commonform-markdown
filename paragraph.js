@@ -32,9 +32,13 @@ function makeHeading(numberStyle, depth, number, heading) {
 
 module.exports = function(paragraph, numberStyle) {
   var conspicuous = paragraph.hasOwnProperty('conspicuous')
+  var depth = paragraph.depth
   return (
-    makeHeading(numberStyle, paragraph.depth, paragraph.numbering, paragraph.heading) +
-    '\n\n' + 
+    ( depth > 1 ?
+      ( makeHeading(
+          numberStyle, depth, paragraph.numbering, paragraph.heading) +
+        '\n\n' ) :
+      '' ) + 
     paragraph.content
       .map(function(element) {
         return run(element, numberStyle, conspicuous) })

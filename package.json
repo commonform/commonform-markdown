@@ -10,6 +10,7 @@
     "markdown-escape": "^1.0.0"
   },
   "devDependencies": {
+    "glob": "^5.0.14",
     "jsmd-tape": "^0.1.0",
     "tape": "^4.0.1"
   },

@@ -4,7 +4,6 @@
   "version": "0.2.0",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "dependencies": {
-    "commonform": "^1.0.1",
     "commonform-flatten": "^0.6.0",
     "decimal-numbering": "^1.0.0",
     "markdown-escape": "^1.0.0"

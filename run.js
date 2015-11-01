@@ -14,7 +14,7 @@
  */
 var escape = require('markdown-escape')
 
-var blank = escape('________')
+var blank = escape('[•]')
 
 module.exports = function run(element, numberStyle, conspicuous) {
   if (typeof element === 'string') {

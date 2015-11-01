@@ -36,7 +36,7 @@ module.exports = function run(element, numberStyle, conspicuous) {
       return (
         '_' +
         escape(
-          'Section ' + numberStyle(numbering) +
+          numberStyle(numbering) +
           ' (' + heading + ')') +
         '_') } }
   else {

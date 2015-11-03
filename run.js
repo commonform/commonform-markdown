@@ -21,6 +21,8 @@ module.exports = function run(element, numberStyle, conspicuous) {
     return ( conspicuous ?
         ( '**_' + escape(element) + '_**' ) :
         escape(element) ) }
+  else if (element.hasOwnProperty('use')) {
+    return escape(element.use) }
   else if (element.hasOwnProperty('definition')) {
     return '"**' + escape(element.definition) + '**"' }
   else if (element.hasOwnProperty('blank')) {

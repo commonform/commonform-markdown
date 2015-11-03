@@ -26,7 +26,10 @@ module.exports = function run(element, numberStyle, conspicuous) {
   else if (element.hasOwnProperty('definition')) {
     return '"**' + escape(element.definition) + '**"' }
   else if (element.hasOwnProperty('blank')) {
-    return blank }
+    if (element.blank === undefined) {
+      return blank }
+    else {
+      return escape(element.blank) } }
   else if (element.hasOwnProperty('heading')) {
     var numbering = element.numbering
     var heading = element.heading

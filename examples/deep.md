@@ -16,7 +16,7 @@ A definition of **Apple**
 
 **Seventh-Level Heading**<a id="Seventh-Level Heading"></a>
 
-Some text
+Some text with _Apple_
 
 # (Continuing)
 

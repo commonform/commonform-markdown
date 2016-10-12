@@ -22,5 +22,6 @@
                                         { "heading": "Seventh-Level Heading",
                                           "form": {
                                             "content": [
-                                              "Some text" ] } } ] } } ] } } ] } } ] } } ] } },
+                                              "Some text with ",
+                                              { "use": "Apple" } ] } } ] } } ] } } ] } } ] } } ] } },
           "More first-level text." ] } } ] }

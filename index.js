@@ -118,7 +118,7 @@ function run (element, conspicuous) {
         : escapeMarkdown(element)
     )
   } else if (element.hasOwnProperty('use')) {
-    return escapeMarkdown(element.use)
+    return '_' + escapeMarkdown(element.use) + '_'
   } else if (element.hasOwnProperty('definition')) {
     return '**' + escapeMarkdown(element.definition) + '**'
   } else if (element.hasOwnProperty('blank')) {

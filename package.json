@@ -11,6 +11,7 @@
   "devDependencies": {
     "glob": "^5.0.14",
     "jsmd-tape": "^0.1.0",
+    "standard": "^8.4.0",
     "tape": "^4.0.1"
   },
   "keywords": [
@@ -25,6 +26,7 @@
   "repository": "commonform/commonform-markdown",
   "scripts": {
     "pretest": "jsmd-tape README.md | sed 's!commonform-markdown!./!' | sed s/jsmd/README/ > README.js",
-    "test": "tape README.js test.js"
+    "test": "tape README.js test.js",
+    "lint": "standard"
   }
 }

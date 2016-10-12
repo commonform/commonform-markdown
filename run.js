@@ -16,33 +16,41 @@ var escape = require('markdown-escape')
 
 var blank = escape('[•]')
 
-module.exports = function run(element, numberStyle, conspicuous) {
+module.exports = function run (element, numberStyle, conspicuous) {
   if (typeof element === 'string') {
-    return ( conspicuous ?
-        ( '**_' + escape(element) + '_**' ) :
-        escape(element) ) }
-  else if (element.hasOwnProperty('use')) {
-    return escape(element.use) }
-  else if (element.hasOwnProperty('definition')) {
-    return '"**' + escape(element.definition) + '**"' }
-  else if (element.hasOwnProperty('blank')) {
+    return (
+      conspicuous
+        ? ('**_' + escape(element) + '_**')
+        : escape(element)
+    )
+  } else if (element.hasOwnProperty('use')) {
+    return escape(element.use)
+  } else if (element.hasOwnProperty('definition')) {
+    return '"**' + escape(element.definition) + '**"'
+  } else if (element.hasOwnProperty('blank')) {
     if (element.blank === undefined) {
-      return blank }
-    else {
-      return escape(element.blank) } }
-  else if (element.hasOwnProperty('heading')) {
+      return blank
+    } else {
+      return escape(element.blank)
+    }
+  } else if (element.hasOwnProperty('heading')) {
     var numbering = element.numbering
     var heading = element.heading
     if (
       element.hasOwnProperty('broken') ||
-      element.hasOwnProperty('ambiguous')) {
-      return escape(heading) }
-    else {
+      element.hasOwnProperty('ambiguous')
+    ) {
+      return escape(heading)
+    } else {
       return (
         '_' +
         escape(
           numberStyle(numbering) +
           ' (' + heading + ')') +
-        '_') } }
-  else {
-    throw new Error('Invalid type: ' + JSON.stringify(element)) } }
+        '_'
+      )
+    }
+  } else {
+    throw new Error('Invalid type: ' + JSON.stringify(element))
+  }
+}

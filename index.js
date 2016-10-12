@@ -14,7 +14,7 @@
  */
 var transform = require('./document')
 
-function commonformMarkdown() {
-  return transform.apply(this, arguments).trim() }
+module.exports = function commonformMarkdown () {
+  return transform.apply(this, arguments).trim()
+}
 
-module.exports = commonformMarkdown

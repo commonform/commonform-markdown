@@ -6,6 +6,6 @@ require('tape')('README', function(test)  {
               form: { content: ['Some text'] }
           }]
   };
-  test.deepEqual(typeof md(form), 'string', 'line 9');
+  test.deepEqual(typeof md(form), 'string', 'line 12');
   test.end();
 });

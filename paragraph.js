@@ -15,32 +15,44 @@
 var escape = require('markdown-escape')
 var run = require('./run')
 
-function formatHeading(depth, text) {
+function formatHeading (depth, text) {
   if (depth <= 7) {
-    return ( new Array(depth).join('#') + ' ' + text ) }
-  else {
-    return ( '**' + text + '**' ) }}
+    return (new Array(depth).join('#') + ' ' + text)
+  } else {
+    return ('**' + text + '**')
+  }
+}
 
-function makeHeading(numberStyle, depth, number, heading) {
+function makeHeading (numberStyle, depth, number, heading) {
   if (number || heading) {
     return formatHeading(
       depth,
-      ( ( number ? escape(numberStyle(number)) + '.' : '' ) +
-        ( heading ? ' ' + escape(heading) + '.' : '' ) )) }
-  else {
-    return formatHeading(depth, '(continuing)') } }
+      (
+        (number ? escape(numberStyle(number)) + '.' : '') +
+        (heading ? ' ' + escape(heading) + '.' : '')
+      )
+    )
+  } else {
+    return formatHeading(depth, '(continuing)')
+  }
+}
 
-module.exports = function(paragraph, numberStyle) {
+module.exports = function (paragraph, numberStyle) {
   var conspicuous = paragraph.hasOwnProperty('conspicuous')
   var depth = paragraph.depth
   return (
-    ( depth > 1 ?
-      ( makeHeading(
-          numberStyle, depth, paragraph.numbering, paragraph.heading) +
-        '\n\n' ) :
-      '' ) + 
+    (
+      depth > 1
+        ? makeHeading(
+            numberStyle, depth, paragraph.numbering, paragraph.heading
+          ) + '\n\n'
+        : ''
+    ) +
     paragraph.content
-      .map(function(element) {
-        return run(element, numberStyle, conspicuous) })
+      .map(function (element) {
+        return run(element, numberStyle, conspicuous)
+      })
       .join('') +
-    (paragraph.content.length > 0 ? '\n\n' : '' ) ) }
+    (paragraph.content.length > 0 ? '\n\n' : '')
+  )
+}

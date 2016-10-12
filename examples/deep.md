@@ -6,7 +6,7 @@ First-level text with a reference to [Sixth-Level Heading](#Sixth-Level Heading)
 
 ### Third-Level Heading<a id="Third-Level Heading"></a>
 
-A definition of "**Apple**"
+A definition of **Apple**
 
 #### (No Heading)
 

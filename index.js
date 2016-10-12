@@ -120,7 +120,7 @@ function run (element, conspicuous) {
   } else if (element.hasOwnProperty('use')) {
     return escapeMarkdown(element.use)
   } else if (element.hasOwnProperty('definition')) {
-    return '"**' + escapeMarkdown(element.definition) + '**"'
+    return '**' + escapeMarkdown(element.definition) + '**'
   } else if (element.hasOwnProperty('blank')) {
     if (element.blank === undefined) {
       return escapeMarkdown('[•]')

@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+var buffer = []
+process.stdin
+.on('data', function (chunk) {
+  buffer.push(chunk)
+})
+.once('end', function () {
+  var input = JSON.parse(Buffer.concat(buffer))
+  console.log(require('./')(input, {}))
+})

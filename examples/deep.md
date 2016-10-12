@@ -1,23 +1,23 @@
-# Section 1. First-Level Heading.
+# First-Level Heading<a id="First-Level Heading"></a>
 
-First-level text with a reference to _Section 1.1.1.1.1.1 \(Sixth-Level Heading\)_
+First-level text with a reference to [Sixth-Level Heading](#Sixth-Level Heading)
 
-## Section 1.1.
+## (No Heading)
 
-### Section 1.1.1. Third-Level Heading.
+### Third-Level Heading<a id="Third-Level Heading"></a>
 
 A definition of "**Apple**"
 
-#### Section 1.1.1.1.
+#### (No Heading)
 
-##### Section 1.1.1.1.1. Fifth-Level Heading.
+##### Fifth-Level Heading<a id="Fifth-Level Heading"></a>
 
-###### Section 1.1.1.1.1.1. Sixth-Level Heading.
+###### Sixth-Level Heading<a id="Sixth-Level Heading"></a>
 
-**Section 1.1.1.1.1.1.1. Seventh-Level Heading.**
+**Seventh-Level Heading**<a id="Seventh-Level Heading"></a>
 
 Some text
 
-# (continuing)
+# (Continuing)
 
 More first-level text.

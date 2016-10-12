@@ -5,6 +5,8 @@
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "dependencies": {
     "commonform-flatten": "^0.8.0",
+    "commonform-group-series": "^0.5.2",
+    "commonform-resolve": "^1.0.0",
     "decimal-numbering": "^1.0.0",
     "markdown-escape": "^1.0.0"
   },

@@ -1,0 +1,15 @@
+{ "content": [
+    { "heading": "First-Level Heading",
+      "form": {
+        "content": [
+          "Here comes a list.",
+          { "form": {
+              "content": [ "Apple" ] } },
+          { "form": {
+              "content": [ "Orange" ] } },
+          "And another one!",
+          { "form": {
+              "content": [ "Red" ] } },
+          { "form": {
+              "content": [ "Purple" ] } },
+          "Last text!" ] } } ] }

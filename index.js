@@ -37,20 +37,25 @@ function render (form, formDepth, listDepth, conspicuous) {
            .join('')
         )
       } else { // series
-        listDepth = (
-          listDepth ||
-          group.content.every(function (element) {
+        if (!listDepth) {
+          listDepth = group.content.every(function (element) {
             return !containsAHeading(element)
           }) ? 1 : 0
-        )
+        }
         var nextFormDepth = formDepth + 1
         return group.content
           .map(
-            listDepth
+            listDepth > 0
               ? function makeListItem (child, index) {
+                var firstElement = child.form.content[0]
+                var startsWithSeries = (
+                  typeof firstElement !== 'string' &&
+                  firstElement.hasOwnProperty('form')
+                )
                 return (
                   new Array(listDepth).join('    ') +
-                  (index + 1) + '.  ' +
+                  (index + 1) + '.' +
+                  (startsWithSeries ? '\n\n' : '  ') +
                   render(
                     child.form,
                     nextFormDepth,

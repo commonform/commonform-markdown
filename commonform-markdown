@@ -1,10 +1,34 @@
 #!/usr/bin/env node
+var docopt = require('docopt').docopt
 var fs = require('fs')
+var path = require('path')
 
-var form = JSON.parse(fs.readFileSync(process.argv[2] || '/dev/stdin'))
+var usage = [
+  'Usage:',
+  '  commonform-markdown [options] <FILE> [<DIRECTIONS>]',
+  '',
+  'Options:',
+  '  -h, --help               Show this screen.',
+  '  -v, --version            Show version.',
+  '  -t TITLE, --title=TITLE  Render title as <h1>.'
+].join('\n')
 
-var directions = process.argv[3]
-  ? JSON.parse(fs.readFileSync(process.argv[3]))
+var parsed = docopt(usage, {
+  version: require('./package.json').version
+})
+
+var form = readJSON(parsed['<FILE>'])
+
+var directions = parsed['<DIRECTIONS>']
+  ? readJSON(parsed['<DIRECTIONS>'])
   : {}
 
-console.log(require('./')(form, directions))
+var options = parsed['--title']
+  ? {title: parsed['--title']}
+  : {}
+
+function readJSON (file) {
+  return JSON.parse(fs.readFileSync(path.resolve(file)))
+}
+
+process.stdout.write(require('./')(form, directions, options) + '\n')

@@ -12,6 +12,7 @@
     "markdown-escape": "^1.0.0"
   },
   "devDependencies": {
+    "docopt": "^0.6.2",
     "glob": "^5.0.14",
     "standard": "^8.4.0",
     "tape": "^4.0.1"

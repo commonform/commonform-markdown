@@ -16,8 +16,15 @@ var escapeMarkdown = require('markdown-escape')
 var group = require('commonform-group-series')
 var resolve = require('commonform-resolve')
 
-module.exports = function (form, values) {
-  return render(resolve(form, values), 0)
+module.exports = function (form, values, options) {
+  if (options === undefined) {
+    options = {}
+  }
+  var haveTitle = options.hasOwnProperty('title')
+  return (
+    (haveTitle ? '# ' + escapeMarkdown(options.title) + '\n\n' : '') +
+    render(resolve(form, values), haveTitle ? 1 : 0)
+  )
 }
 
 function render (form, formDepth, listDepth, conspicuous) {

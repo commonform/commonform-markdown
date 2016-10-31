@@ -1,7 +1,7 @@
 {
   "name": "commonform-markdown",
   "description": "render Common Forms as Markdown documents",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "bin": "commonform-markdown",
   "dependencies": {

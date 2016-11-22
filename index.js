@@ -98,10 +98,14 @@ function formatHeading (formDepth, text, createAnchor) {
         : '**' + text + '**'
     ) + (
       createAnchor
-        ? '<a id="' + text + '"></a>'
+        ? '<a id="' + idForHeading(text) + '"></a>'
         : ''
     )
   )
+}
+
+function idForHeading (heading) {
+  return heading.replace(/ /g, '_')
 }
 
 function headingFor (formDepth, heading, suppressAnchor) {
@@ -147,7 +151,10 @@ function run (element, conspicuous) {
     ) {
       return escapeMarkdown(heading)
     } else {
-      return '[' + escapeMarkdown(heading) + '](#' + heading + ')'
+      return (
+        '[' + escapeMarkdown(heading) + ']' +
+        '(#' + idForHeading(heading) + ')'
+      )
     }
   } else {
     throw new Error('Invalid type: ' + JSON.stringify(element))

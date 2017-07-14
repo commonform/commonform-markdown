@@ -14,6 +14,7 @@
  */
 var escapeMarkdown = require('markdown-escape')
 var group = require('commonform-group-series')
+var hash = require('commonform-hash')
 var resolve = require('commonform-resolve')
 
 module.exports = function (form, values, options) {
@@ -21,8 +22,26 @@ module.exports = function (form, values, options) {
     options = {}
   }
   var haveTitle = options.hasOwnProperty('title')
+  var haveEdition = options.hasOwnProperty('edition')
   return (
-    (haveTitle ? '# ' + escapeMarkdown(options.title) + '\n\n' : '') +
+    (
+      haveTitle
+        ? (
+          '# ' + escapeMarkdown(options.title) +
+          (
+            haveEdition
+              ? ' ' + escapeMarkdown(options.edition)
+              : ''
+          ) +
+          '\n\n'
+        )
+        : ''
+    ) +
+    (
+      options.hash
+        ? ('`[•] ' + hash(form) + '`\n\n')
+        : ''
+    ) +
     render(resolve(form, values), haveTitle ? 1 : 0)
   )
 }

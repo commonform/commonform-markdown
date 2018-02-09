@@ -46,13 +46,13 @@ module.exports = function (form, values, options) {
   )
 }
 
-function render (form, formDepth, listDepth, conspicuous) {
+function render (form, formDepth, indentation, conspicuous) {
   return group(form)
     .map(function (group, index) {
       if (group.type === 'paragraph') {
         return (
           (
-            (listDepth || index === 0)
+            (indentation || index === 0)
               ? ''
               : (headingFor(formDepth, '(Continuing)', true) + '\n\n')
           ) +
@@ -63,15 +63,15 @@ function render (form, formDepth, listDepth, conspicuous) {
            .join('')
         )
       } else { // series
-        if (!listDepth) {
-          listDepth = group.content.every(function (element) {
+        if (!indentation) {
+          indentation = group.content.every(function (element) {
             return !containsAHeading(element)
           }) ? 1 : 0
         }
         var nextFormDepth = formDepth + 1
         return group.content
           .map(
-            listDepth > 0
+            indentation > 0
               ? function makeListItem (child, index) {
                 var firstElement = child.form.content[0]
                 var startsWithSeries = (
@@ -79,13 +79,16 @@ function render (form, formDepth, listDepth, conspicuous) {
                   firstElement.hasOwnProperty('form')
                 )
                 return (
-                  new Array(listDepth).join('    ') +
+                  new Array(indentation).join(' ') +
                   (index + 1) + '.' +
                   (startsWithSeries ? '\n\n' : '  ') +
                   render(
                     child.form,
                     nextFormDepth,
-                    listDepth + 1,
+                    // When the <ul> number is 10 or greater,
+                    // the number takes up an additional character,
+                    // and we need to indent its children further.
+                    indentation + 3 + index.toString().length,
                     child.conspicuous
                   )
                 )

@@ -113,15 +113,21 @@ function render (form, formDepth, indentation, conspicuous) {
 }
 
 function formatHeading (formDepth, text, createAnchor) {
+  var anchor = createAnchor
+    ? '<a id="' + idForHeading(text) + '"></a>'
+    : ''
   return (
     (
       formDepth < 7
-        ? (new Array(formDepth + 1).join('#') + ' ' + text)
-        : '**' + text + '**'
-    ) + (
-      createAnchor
-        ? '<a id="' + idForHeading(text) + '"></a>'
-        : ''
+        ? (
+          new Array(formDepth + 1).join('#') +
+          (
+            anchor
+              ? (' ' + anchor + text)
+              : (' ' + text)
+          )
+        )
+        : (anchor + '**' + text + '**')
     )
   )
 }
